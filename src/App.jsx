@@ -85,22 +85,6 @@ function App() {
                   </Suspense>
                 }
               />
-              {/* <Route
-              path="/l"
-              element={
-                isAuthenticated ? (
-                  <SidebarLayout
-                    user={user}
-                    authenticated={isAuthenticated}
-                    onLogout={handleLogout}
-                  >
-                    <FeatureCard />
-                  </SidebarLayout>
-                ) : (
-                  <Navigate to="/signin" />
-                )
-              }
-            /> */}
               <Route path="*" element={<Error />} />
             </Route>
           </Routes>
