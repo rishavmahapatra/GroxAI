@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { url } from "@/components/config.jsx";
 import ApiAlert from "./ApiAlert.jsx";
+import { json } from "react-router-dom";
 
 const filters = [
   { label: "All", value: "all" },
@@ -87,6 +88,8 @@ export default function QuestionsPage({ data, setData }) {
       })),
     [data],
   );
+  const resumeID = JSON.parse(localStorage.getItem("resumeId"));
+  console.log(resumeID);
 
   const stats = useMemo(() => {
     const total = normalizedItems.length;
@@ -155,6 +158,7 @@ export default function QuestionsPage({ data, setData }) {
   const resetSession = () => {
     localStorage.removeItem("questions");
     localStorage.removeItem("answers");
+    localStorage.removeItem("resumeId");
     localStorage.removeItem("question_notes");
     setData([]);
   };
@@ -269,7 +273,7 @@ export default function QuestionsPage({ data, setData }) {
                 ))}
                 <Button asChild className="rounded-lg" variant="outline">
                   <a
-                    href={`${url}/download/696ec0db740876007820d083`}
+                    href={`${url}/download/${resumeID}`}
                     rel="noreferrer"
                     target="_blank"
                   >

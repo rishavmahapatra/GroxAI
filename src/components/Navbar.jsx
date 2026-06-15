@@ -31,14 +31,9 @@ export default function Navbar({ authenticated, user, onLogout }) {
   return (
 <nav
   className="
-    fixed inset-x-0 top-0 z-50
-    border-b border-black/5 dark:border-white/10
-
-    bg-white/60 dark:bg-black/30
-    backdrop-blur-xl
-
-    supports-[backdrop-filter]:bg-white/50
-    dark:supports-[backdrop-filter]:bg-black/20
+    fixed inset-x-0 top-0 z-50 backdrop-blur-xl
+    supports-[backdrop-filter]:bg-[#ECF2EE]/55
+    dark:supports-[backdrop-filter]:bg-[#132428]/40
 
     shadow-[0_1px_0_rgba(255,255,255,0.04)]
   "
@@ -56,7 +51,7 @@ export default function Navbar({ authenticated, user, onLogout }) {
           {/* <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-zinc-950 text-white shadow-sm dark:bg-white dark:text-zinc-950">
             <Sparkles className="h-4 w-4" />
           </span> */}
-          <span className="font-display text-xl">Interview Valley</span>
+          <span className="font-thin text-xl">Interview Valley</span>
         </Link>
 
         {/* <div className="hidden items-center gap-1 rounded-lg border border-zinc-900/10 bg-zinc-100/70 p-1 dark:border-white/10 dark:bg-white/5 md:flex">

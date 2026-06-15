@@ -71,8 +71,9 @@ export default function Home() {
 
       if (response.ok) {
         const result = await response.json();
-        setData(result);
-        localStorage.setItem("questions", JSON.stringify(result));
+        setData(result.questions);
+        localStorage.setItem("questions", JSON.stringify(result.questions));
+        localStorage.setItem("resumeId", JSON.stringify(result.resumeId));
       } else {
         setError("Upload failed. Please check the file and try again.");
       }
@@ -94,13 +95,13 @@ export default function Home() {
 
   return (
     <main className="min-h-[calc(100vh-64px)] bg-[#f7f4eb] px-4 py-12 dark:bg-zinc-950 sm:px-6 lg:px-8">
-      <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
-        <section>
+      <div className="mx-auto grid max-w-7xl items-center  gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+        <section className="hidden md:block">
           <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-zinc-900/10 bg-white px-4 py-2 text-sm font-semibold text-zinc-700 shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-zinc-200">
             <Sparkles className="h-4 w-4 text-amber-500" />
             New practice session
           </p>
-          <h1 className="font-display text-4xl font-bold leading-tight text-zinc-950 dark:text-white sm:text-6xl">
+          <h1 className="font-serif text-4xl font-bold leading-tight text-zinc-950 dark:text-white sm:text-6xl">
             Build an interview set from your real materials.
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-8 text-zinc-700 dark:text-zinc-300">
@@ -164,7 +165,7 @@ export default function Home() {
                   Resume or job description
                 </h3>
                 <p className="mt-1 text-sm leading-6 text-zinc-600 dark:text-zinc-300">
-                  PDF, doc, or text-based files work best. Upload one or both
+                  Upload PDF files only. Upload one or both
                   for stronger question matching.
                 </p>
               </div>
@@ -191,7 +192,7 @@ export default function Home() {
                 <form className="grid gap-5 pt-2" onSubmit={handleSubmit}>
                   <div className="grid gap-2">
                     <Label htmlFor="resume">Resume</Label>
-                    <Input
+                    <Input className="dark:file:text-gray-100"
                       id="resume"
                       onChange={(e) => setResume(e.target.files[0])}
                       type="file"
@@ -200,7 +201,7 @@ export default function Home() {
 
                   <div className="grid gap-2">
                     <Label htmlFor="jobDescription">Job description</Label>
-                    <Input
+                    <Input className="dark:file:text-gray-100"
                       id="jobDescription"
                       onChange={(e) => setJobDescription(e.target.files[0])}
                       type="file"

@@ -28,6 +28,9 @@ function App() {
     setIsAuthenticated(false);
     localStorage.removeItem("access_token");
     localStorage.removeItem("questions");
+    localStorage.removeItem("resumeId");
+    localStorage.removeItem("answers");
+    localStorage.removeItem("question_notes");
     localStorage.removeItem("user");
     console.log("Logout");
   };
