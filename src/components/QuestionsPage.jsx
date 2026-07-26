@@ -246,8 +246,8 @@ export default function QuestionsPage({ data, setData }) {
               New Session
             </Button>
           </div>
-          <div>
-            <RecentSessions />
+          <div className="overflow-x-hidden border m-2">
+            <RecentSessions compact/>
           </div>
         </aside>
 

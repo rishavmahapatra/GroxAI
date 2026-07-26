@@ -225,7 +225,7 @@ export default function Home() {
           </div>
         </section>
       </div>
-      <div className="mx-auto my-8 bg-zinc-200 rounded-sm p-2 max-w-7xl">
+      <div className="mx-auto my-8 rounded-sm border max-w-7xl">
         <RecentSessions />
       </div>
       
