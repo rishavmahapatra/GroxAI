@@ -110,45 +110,46 @@ export default function Land() {
 
     
       gsap.from(".herosection", {
-        y: 70,
+        y: 80,
         opacity: 0,
         duration: 0.5,
         delay: 0.2,
-        ease: "power3.in",
+        ease: "power3.out",
       });
     gsap.to(".heroScroll", {
-      y: 10,
+      y: 30,
       scale: 1.1,
       scrollTrigger: {
         trigger: ".heroScroll",
         start: "top 80%",
-        end: "top 00%",
+        end: "top 20%",
         scrub: 1,
       },
     });
 
-    const sectionAnimation = (target, yValue) => {
+    const sectionAnimation = (target) => {
       gsap.from(target, {
-        y: yValue,
+        y: 50,
         opacity: 0,
         scale: 0.94,
         duration: 1,
-        // ease: "power3.out",
+        ease: "power3.out",
 
         scrollTrigger: {
           trigger: target,
           start: "top 95%",
+          once: true,
           end: "top 30%",
-          scrub: 0.3,
+          scrub: 0.5,
         },
       });
     };
     
-    sectionAnimation("#featureCard", -50);
-    sectionAnimation("#howItWorks", -50);
-    sectionAnimation("#benefits", -50);
-    sectionAnimation("#feedback", -50);
-    sectionAnimation(".footerbanner", -50);
+    sectionAnimation("#featureCard");
+    sectionAnimation("#howItWorks");
+    sectionAnimation("#benefits");
+    sectionAnimation("#feedback");
+    sectionAnimation(".footerbanner");
 
   }, []);
   const navigate = useNavigate();
@@ -318,7 +319,7 @@ export default function Land() {
   <FeatureCard />
 </div>
 
-      <section  id="howItWorks" className="bg-white py-20 dark:bg-zinc-950">
+      <section id="howItWorks" className="bg-white py-20 dark:bg-zinc-950">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 max-w-3xl">
             <p className=" mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-sky-600 dark:text-sky-400">

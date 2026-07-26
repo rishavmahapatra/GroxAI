@@ -34,7 +34,7 @@ export function SignIn({ onLogin, user }) {
   });
 
   return (
-    <main className="min-h-screen bg-[#f7f4eb] px-4 py-10 text-zinc-950 dark:bg-zinc-950 dark:text-white sm:px-6 lg:px-8">
+    <main className="min-h-[calc(100vh-64px)] bg-[#f7f4eb] px-4 py-10 text-zinc-950 dark:bg-zinc-950 dark:text-white sm:px-6 lg:px-8 sm:py-0">
       <div className="mx-auto flex min-h-[calc(100vh-5rem)] max-w-6xl items-center justify-center">
         <div className="grid w-full overflow-hidden rounded-lg border border-zinc-900/10 bg-white shadow-2xl shadow-zinc-900/10 dark:border-white/10 dark:bg-zinc-900 lg:grid-cols-[1.05fr_0.95fr]">
           <section className="relative hidden bg-zinc-950 p-10 text-white lg:block">

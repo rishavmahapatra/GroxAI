@@ -14,7 +14,7 @@ import {
 import { useState } from "react"
 
 export default function RecentInterview() {
-  const [interviews, setInterviews] = useState([]);
+  const [interviews, setInterviews] = useState([2,33,4]);
   return (
     <Card className="border-0">
       <CardHeader className="">

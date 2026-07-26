@@ -6,6 +6,13 @@ import {
   MessageSquareText,
   SlidersHorizontal,
 } from "lucide-react";
+import {useRef} from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 
 const features = [
   {
@@ -53,6 +60,20 @@ const features = [
 ];
 
 export default function FeatureCard() {
+  const sectionRef = useRef();
+
+useGSAP(() => {
+  gsap.from(".feature-card", {
+    opacity: 0,
+    y: 40,
+    stagger: 0.15,
+    scrollTrigger: {
+      trigger: sectionRef.current,
+      start: "top 75%",
+      once: true
+    },
+  });
+}, { scope: sectionRef });
   return (
     <section id="features" className="relative">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -69,10 +90,10 @@ export default function FeatureCard() {
           </p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div ref={sectionRef}  className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {features.map(({ title, description, icon: Icon, tone }) => (
             <article
-              className="hover-lift-3d group relative overflow-hidden rounded-lg border border-zinc-200/80 bg-white/85 p-6 shadow-sm backdrop-blur dark:border-white/10 dark:bg-zinc-950/70 dark:hover:border-white/20"
+              className="feature-card hover-lift-3d group relative overflow-hidden rounded-lg border border-zinc-200/80 bg-white/85 p-6 shadow-sm backdrop-blur dark:border-white/10 dark:bg-zinc-950/70 dark:hover:border-white/20"
               key={title}
             >
               <div

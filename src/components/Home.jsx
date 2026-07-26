@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import QuestionsPage from "./QuestionsPage";
 import Shimmer from "./Shimmer";
+import RecentSessions from "./RecentSession";
 
 const starterCards = [
   "Resume-aware technical prompts",
@@ -57,6 +58,7 @@ export default function Home() {
     if (jobDescription) {
       formData.append("files_upload", jobDescription);
     }
+    formData.append("user_email", JSON.parse(localStorage.getItem("user")).email)
 
     setLoading(true);
 
@@ -223,6 +225,10 @@ export default function Home() {
           </div>
         </section>
       </div>
+      <div className="mx-auto my-8 bg-zinc-200 rounded-sm p-2 max-w-7xl">
+        <RecentSessions />
+      </div>
+      
     </main>
   );
 }

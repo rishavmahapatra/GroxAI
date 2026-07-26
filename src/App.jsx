@@ -47,9 +47,9 @@ function App() {
     //   // handleLogout()
     // }
   }, [token]);
-  useEffect(() => {
-    console.log("isAuthenticated: ", isAuthenticated);
-  }, [isAuthenticated]);
+  // useEffect(() => {
+  //   console.log("isAuthenticated: ", isAuthenticated);
+  // }, [isAuthenticated]);
   return (
     <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
       <GoogleOAuthProvider clientId="750789723123-1sd7uafuq4nrr52b3dm7lk5dhgmf7vn5.apps.googleusercontent.com">
@@ -83,10 +83,19 @@ function App() {
               <Route
                 path="/home"
                 element={
+                isAuthenticated ? (
                   <Suspense fallback={<div></div>}>
                     <Home user={setUser} />
                   </Suspense>
-                }
+                ) : (
+                  <SignIn onLogin={handleLogin} user={setUser} />
+                )
+              }
+                // {
+                //   <Suspense fallback={<div></div>}>
+                //     <Home user={setUser} />
+                //   </Suspense>
+                // }
               />
               <Route path="*" element={<Error />} />
             </Route>

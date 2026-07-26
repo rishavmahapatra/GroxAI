@@ -18,6 +18,7 @@ import { Input } from "@/components/ui/input";
 import { url } from "@/components/config.jsx";
 import ApiAlert from "./ApiAlert.jsx";
 import { json } from "react-router-dom";
+import RecentSessions from "./RecentSession.jsx";
 
 const filters = [
   { label: "All", value: "all" },
@@ -184,11 +185,11 @@ export default function QuestionsPage({ data, setData }) {
   };
 
   return (
-    <main className="min-h-[calc(100vh-64px)] bg-[#f7f4eb] px-4 py-8 dark:bg-zinc-950 sm:px-6 lg:px-8">
+    <main className="h-[calc(100vh-64px)] overflow-hidden bg-[#f7f4eb] px-4 py-8 dark:bg-zinc-950 sm:px-6 lg:px-8">
       {showColdStartAlert ? <ApiAlert /> : null}
 
-      <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[300px_1fr]">
-        <aside className="h-fit rounded-lg border border-zinc-900/10 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-zinc-900 lg:sticky lg:top-24">
+      <div className="mx-auto grid h-full max-w-7xl gap-6 lg:grid-cols-[300px_1fr]">
+        <aside className="overflow-y-auto rounded-lg border border-zinc-900/10 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-zinc-900 ">
           <p className="mb-2 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.16em] text-emerald-700 dark:text-emerald-400">
             <Sparkles className="h-4 w-4" />
             Workspace
@@ -245,9 +246,12 @@ export default function QuestionsPage({ data, setData }) {
               New Session
             </Button>
           </div>
+          <div>
+            <RecentSessions />
+          </div>
         </aside>
 
-        <section className="min-w-0">
+        <section className="min-w-0 h-full overflow-y-auto">
           <header className="mb-4 rounded-lg border border-zinc-900/10 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-zinc-900">
             <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
               <div className="relative flex-1">
