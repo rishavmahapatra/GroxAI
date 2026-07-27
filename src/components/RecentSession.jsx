@@ -2,7 +2,7 @@ import { Clock3, FileText, ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { url } from "@/components/config.jsx";
 
-export default function RecentSessions({ compact = false }) {
+export default function RecentSessions({ compact = false, setData }) {
   const [sessions, setSessions] = useState([]);
   const getRecentSession = async function () {
     const res = await fetch(
@@ -40,7 +40,7 @@ export default function RecentSessions({ compact = false }) {
               className="group flex flex-col gap-5 rounded-xl border border-zinc-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-zinc-300 hover:shadow-lg dark:border-white/10 dark:bg-zinc-900 dark:hover:border-white/20"
             >
               <div
-                className={`flex flex-col gap-4 items-end ${
+                className={`flex flex-col gap-4 items-center ${
                   compact ? "" : "sm:flex-row sm:items-center justify-between"
                 }`}
               >
@@ -70,7 +70,7 @@ export default function RecentSessions({ compact = false }) {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <button className="flex items-center gap-2 font-medium text-sky-600 transition group-hover:gap-3 dark:text-sky-400">
+                  <button onClick={()=>{localStorage.setItem("questions",JSON.stringify(session.questions)),setData(session.questions)}} className="flex items-center gap-2 font-medium text-sky-600 transition group-hover:gap-3 dark:text-sky-400">
                     Continue
                     <ArrowRight className="h-4 w-4" />
                   </button>

@@ -226,7 +226,7 @@ export default function Home() {
         </section>
       </div>
       <div className="mx-auto my-8 rounded-sm border max-w-7xl">
-        <RecentSessions />
+        <RecentSessions setData={setData}/>
       </div>
       
     </main>

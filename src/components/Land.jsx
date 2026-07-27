@@ -117,12 +117,12 @@ export default function Land() {
         ease: "power3.out",
       });
     gsap.to(".heroScroll", {
-      y: 30,
+      y: 10,
       scale: 1.1,
       scrollTrigger: {
         trigger: ".heroScroll",
         start: "top 80%",
-        end: "top 20%",
+        end: "top 0%",
         scrub: 1,
       },
     });
