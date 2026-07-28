@@ -10,7 +10,7 @@ export default function RecentSessions({ compact = false, setData ,setVisible,se
     try{
       setLoading(true);
  const res = await fetch(
-      `${url}/getRecentSessions/${JSON.parse(localStorage.getItem("user")).email}`,
+      `${url}/getRecentSession/${JSON.parse(localStorage.getItem("user")).email}`,
     );
       if (!res.ok) {
       throw new Error(`HTTP ${res.status}`);
