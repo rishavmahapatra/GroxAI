@@ -22,7 +22,6 @@ function App() {
   const [user, setUser] = useState();
   const handleLogin = () => {
     setIsAuthenticated(true);
-    console.log("Login");
   };
   const handleLogout = () => {
     setIsAuthenticated(false);
@@ -32,21 +31,14 @@ function App() {
     localStorage.removeItem("answers");
     localStorage.removeItem("question_notes");
     localStorage.removeItem("user");
-    console.log("Logout");
   };
-  const token = localStorage.getItem("user");
 
-  useEffect(() => {
-    localStorage.getItem("user") || token
-      ? (console.log("User found"),
-        handleLogin(),
-        console.log("User is: " + localStorage.getItem("user")))
-      : console.error("No User found");
-
-    // else {console.error('No Token found');
-    //   // handleLogout()
-    // }
-  }, [token]);
+  // useEffect(() => {
+  //   localStorage.getItem("user") || token
+  //     ? (console.log("User found"),
+  //       handleLogin())
+  //     : console.error("No User found");
+  // }, [token]);
   // useEffect(() => {
   //   console.log("isAuthenticated: ", isAuthenticated);
   // }, [isAuthenticated]);

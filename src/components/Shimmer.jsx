@@ -10,7 +10,7 @@ export default function Shimmer() {
   }, []);
 
   return (
-    <main className="min-h-[calc(100vh-64px)] bg-[#f7f4eb] px-4 py-10 dark:bg-zinc-950 sm:px-6 lg:px-8">
+    <main className="min-h-[calc(100vh-64px)] bg-[#f7f4eb] dark:bg-zinc-950 py-10">
       {showAlert ? <ApiAlert /> : null}
       <div className="mx-auto max-w-5xl">
         <div className="mb-6">

@@ -42,7 +42,7 @@ function createTextBundle(item, generatedAnswer, note) {
     .join("\n\n");
 }
 
-export default function QuestionsPage({ data, setData }) {
+export default function QuestionsPage({ data, setData, notes, setNotes}) {
   const [answer, setAnswer] = useState(() => {
     try {
       return JSON.parse(localStorage.getItem("answers")) || {};
@@ -51,13 +51,6 @@ export default function QuestionsPage({ data, setData }) {
     }
   });
   const [visible, setVisible] = useState({});
-  const [notes, setNotes] = useState(() => {
-    try {
-      return JSON.parse(localStorage.getItem("question_notes")) || {};
-    } catch {
-      return {};
-    }
-  });
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState("all");
   const [copiedId, setCopiedId] = useState(null);
@@ -90,7 +83,6 @@ export default function QuestionsPage({ data, setData }) {
     [data],
   );
   const resumeID = JSON.parse(localStorage.getItem("resumeId"));
-  console.log(resumeID);
 
   const stats = useMemo(() => {
     const total = normalizedItems.length;
@@ -246,8 +238,9 @@ export default function QuestionsPage({ data, setData }) {
               New Session
             </Button>
           </div>
-          <div className="overflow-x-hidden border my-4 rounded-md">
-            <RecentSessions compact setData={setData}/>
+          
+          <div className="overflow-x-hidden border mt-6 rounded-md">
+            <RecentSessions setVisible={setVisible} compact setNotes={setNotes} setData={setData}/>
           </div>
         </aside>
 

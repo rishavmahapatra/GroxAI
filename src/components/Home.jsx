@@ -33,7 +33,15 @@ export default function Home() {
   const [jobDescription, setJobDescription] = useState(null);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
+ 
   const [error, setError] = useState("");
+    const [notes, setNotes] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem("question_notes")) || {};
+    } catch {
+      return {};
+    }
+  });
 
   useEffect(() => {
     const prevQuestions = JSON.parse(localStorage.getItem("questions"));
@@ -92,7 +100,7 @@ export default function Home() {
   }
 
   if (data?.length > 0) {
-    return <QuestionsPage data={data} setData={setData} />;
+    return <QuestionsPage data={data} notes={notes} setNotes={setNotes} setData={setData} />;
   }
 
   return (
@@ -226,7 +234,7 @@ export default function Home() {
         </section>
       </div>
       <div className="mx-auto my-8 rounded-sm border max-w-7xl">
-        <RecentSessions setData={setData}/>
+        <RecentSessions setData={setData} setNotes={setNotes}/>
       </div>
       
     </main>
